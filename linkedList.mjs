@@ -5,7 +5,7 @@ function Node(input=null) {
     }
 }
 
-function LinkedList() {
+export function LinkedList() {
     let headNode = null
     let length = 0
 
@@ -143,7 +143,7 @@ function LinkedList() {
         let pointer = headNode
         let string = ""
         while (pointer !== null) {
-            string += pointer.value + " -> "
+            string += "( " + pointer.value + " )"+ " -> "
             pointer = pointer.nextNode
         }
         string += "null"
@@ -167,27 +167,3 @@ function LinkedList() {
         removeAt
     }
 }
-
-// example uses class syntax - adjust as necessary
-const list = new LinkedList();
-
-list.append("dog");
-list.append("cat");
-list.append("parrot");
-list.append("hamster");
-list.append("snake");
-list.append("turtle");
-
-console.log(list.toString())
-console.log(list.size())
-console.log(list.head())
-console.log(list.tail())
-console.log(list.at(3))
-list.pop()
-console.log(list.toString())
-console.log(list.contains("snake"))
-console.log(list.find("cat"))
-list.insertAt("igloo", 2)
-console.log(list.toString())
-list.removeAt(5)
-console.log(list.toString())
