@@ -47,11 +47,65 @@ function LinkedList() {
 
     const head = () => {
         if (headNode === null) return null
-        return headNode.value
+        return headNode
     }
 
     const tail = () => {
+        if (headNode === null) return null
+        let pointer = headNode
+        while (pointer.nextNode !== null){
+            pointer = pointer.nextNode
+        }
 
+        return pointer
+    }
+
+    const at = (index) => {
+        if (headNode === null) return null
+        let pointer = headNode
+        for (let i = 0; i < index; i++) {
+            pointer = pointer.nextNode
+        }
+        return pointer
+    }
+
+    const pop = () => {
+        if (headNode === null) return null
+
+        let pointer = headNode
+        let previous = null
+        
+        while (pointer.nextNode !== null) {
+            previous = pointer
+            pointer = pointer.nextNode
+        }
+        previous.nextNode = null;
+    }
+
+    const contains = (value) => {
+        if (headNode === null) return false
+        let pointer = headNode
+
+        while (pointer !== null) {
+            if (pointer.value === value) return true
+            pointer = pointer.nextNode
+        }
+
+        return false
+    }
+
+    const find = (value) => {
+        if (headNode === null) return null
+
+        let pointer = headNode
+        let count = 0
+        while (pointer !== null) {
+            if (pointer.value === value) return count
+            count += 1
+            pointer = pointer.nextNode
+        }
+
+        return null
     }
 
     const toString = () => {
@@ -71,7 +125,11 @@ function LinkedList() {
         toString,
         size,
         head,
-        tail
+        tail,
+        at,
+        pop,
+        contains,
+        find
     }
 }
 
@@ -88,3 +146,9 @@ list.append("turtle");
 console.log(list.toString())
 console.log(list.size())
 console.log(list.head())
+console.log(list.tail())
+console.log(list.at(3))
+list.pop()
+console.log(list.toString())
+console.log(list.contains("snake"))
+console.log(list.find("cat"))
