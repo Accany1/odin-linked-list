@@ -108,6 +108,24 @@ function LinkedList() {
         return null
     }
 
+    const insertAt = (value,index) => {
+        const newNode = Node(value)
+        if (headNode === null) {
+            headNode = newNode
+        }
+
+        let prev = null
+
+        let pointer = headNode
+        for (let i = 0; i < index; i++) {
+            prev = pointer
+            pointer = pointer.nextNode
+        }
+        
+        prev.nextNode = newNode
+        newNode.nextNode = pointer
+    }
+
     const toString = () => {
         let pointer = headNode
         let string = ""
@@ -119,6 +137,8 @@ function LinkedList() {
         return string
     }
 
+    
+
     return {
         append,
         prepend,
@@ -129,7 +149,8 @@ function LinkedList() {
         at,
         pop,
         contains,
-        find
+        find,
+        insertAt
     }
 }
 
@@ -152,3 +173,5 @@ list.pop()
 console.log(list.toString())
 console.log(list.contains("snake"))
 console.log(list.find("cat"))
+list.insertAt("igloo", 2)
+console.log(list.toString())
