@@ -126,6 +126,19 @@ function LinkedList() {
         newNode.nextNode = pointer
     }
 
+    const removeAt = (index) => {
+        if (headNode === null) return null
+
+        let prev = at(index-1)
+        let after = at(index+1)
+
+        if (index === 0) {
+            headNode = after
+        } else {
+            prev.nextNode = after
+        }   
+    }
+
     const toString = () => {
         let pointer = headNode
         let string = ""
@@ -150,7 +163,8 @@ function LinkedList() {
         pop,
         contains,
         find,
-        insertAt
+        insertAt,
+        removeAt
     }
 }
 
@@ -174,4 +188,6 @@ console.log(list.toString())
 console.log(list.contains("snake"))
 console.log(list.find("cat"))
 list.insertAt("igloo", 2)
+console.log(list.toString())
+list.removeAt(5)
 console.log(list.toString())
