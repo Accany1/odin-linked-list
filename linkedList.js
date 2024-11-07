@@ -24,6 +24,36 @@ function LinkedList() {
         }
     }
 
+    const prepend = (value) => {
+        const newNode = Node(value)
+        newNode.nextNode = headNode
+        headNode = newNode
+    }
+
+    const size = () => {
+        if (headNode === null) {
+            return 0
+        }
+        let count = 1
+        let pointer = headNode
+
+        while (pointer.nextNode !== null){
+            count += 1
+            pointer = pointer.nextNode
+        }
+
+        return count
+    }
+
+    const head = () => {
+        if (headNode === null) return null
+        return headNode.value
+    }
+
+    const tail = () => {
+
+    }
+
     const toString = () => {
         let pointer = headNode
         let string = ""
@@ -37,7 +67,11 @@ function LinkedList() {
 
     return {
         append,
-        toString
+        prepend,
+        toString,
+        size,
+        head,
+        tail
     }
 }
 
@@ -52,3 +86,5 @@ list.append("snake");
 list.append("turtle");
 
 console.log(list.toString())
+console.log(list.size())
+console.log(list.head())
